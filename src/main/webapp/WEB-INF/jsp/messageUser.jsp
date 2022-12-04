@@ -1,0 +1,38 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Andrey72
+  Date: 15.11.2022
+  Time: 20:57
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<%@include file="header.jsp"%>
+<h1>MessageUser</h1>
+Список сообщений
+<c:forEach var="sms" items="${requestScope.listSms}">
+    <form action="${pageContext.request.contextPath}/user/delete" method="post">
+        <input type="text" name="id" value="${sms.id}">
+        <input type="text" name="sms" value="${sms.sms}" disabled>
+        <input type="text" name="chat" value="${sms.loginSender}" disabled>
+        <input type="text" name="chat" value="${sms.chat.title}" disabled>
+<%--        <input type="text" name="chat" value="${requestScope.chatTitle}" disabled>--%>
+<%--        <input type="text" name="website" value="${sms.website}" disabled>--%>
+<%--        <input type="text" name="comment" value="${sms.comment}" disabled>--%>
+        <button type="submit">Удалить</button>
+    </form>
+</c:forEach>
+Ввод смс
+<form action="${pageContext.request.contextPath}/user/addSms" method="post">
+    <label for="smsId">Сообщение:
+        <input type="text" name="message" id="smsId">
+        <input type="text" name="chatTitle" value="${requestScope.chatTitle}">
+    </label><br>
+    <button type="submit">Отправить сообщение</button>
+</form>
+</body>
+</html>
