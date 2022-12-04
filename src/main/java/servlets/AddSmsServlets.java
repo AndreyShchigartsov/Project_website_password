@@ -17,6 +17,6 @@ public class AddSmsServlets extends HttpServlet {
         var sms = req.getParameter("name");
         var chatTitle = req.getParameter("chatTitle");
         smsService.addSms(sms,chatTitle);
-        super.doPost(req, resp)
+        super.doPost(req, resp);
     }
 }
