@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+</head>
+<body>
+<form action="/login" method="post">
+  <div style="color: red" th:if="${param.error}">
+    Bad credentials
+  </div>
+  <label for="name">Login
+    <input type="text" name="username" id="name" >
+  </label><br>
+  <label for="password">Password
+    <input type="password" name="password" id="password">
+  </label><br>
+  <button type="submit">Login</button>
+</form> <br>
+  <a href="/registration">
+    <button type="button">Registration</button>
+  </a>
+<!--  <c:if test="${param.error != null}">-->
+<!--    <div style="color: red">-->
+<!--      <span>Email or password is not correct</span>-->
+<!--    </div>-->
+<!--  </c:if>-->
+
+</body>
+</html>

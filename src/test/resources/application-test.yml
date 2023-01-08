@@ -1,0 +1,18 @@
+#db:
+#  url: jdbc:postgresql://localhost:5432/postgres
+#  user: postgres
+#  password: 647881
+#  driver: org.postgresql.Driver
+db:
+  username: test
+  password: test
+
+spring:
+  datasource:
+    username: test
+    password: test
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: validate

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+<div th:insert="~{fragment :: header}"></div>
+<form action="/admin/users">
+    <!--    <input type="hidden" name="userId" th:value="${userId}">-->
+    <label for="password">Password
+        <input id="password" type="text" name="password" th:value="${filter.password()}">
+    </label>
+    <label for="website">Website
+        <input id="website" type="text" name="website" th:value="${filter.website()}">
+    </label>
+    <label for="comment">Comment
+        <input id="comment" type="text" name="comment" th:value="${filter.comment()}">
+    </label>
+    <div>
+        <label for="page">Page
+            <input id="page" type="number" name="page" th:value="${storages.metadata.page}">
+        </label>
+        <label for="size">Size
+            <input id="size" type="text" name="size" th:value="${storages.metadata.size}">
+        </label>
+    </div>
+    <button type="submit">Filter</button>
+</form>
+<div th:each="user : ${users}">
+    <form th:action="@{'/admin/users/storage/' + ${user.getLogin()}}" method="post">
+        <input type="text" name="login" th:value="${user.getLogin()}">
+        <input type="text" name="email"  th:value="${user.getEmail()}">
+        <button type="submit">перейти</button>
+    </form>
+</div>
+
+<!--<c:forEach var="user" items="${requestScope.usersDtoList}">-->
+<!--    <form action="/admin/storage/${user.username}" method="post">-->
+<!--        <input type="text" name="id" value="${user.id}">-->
+<!--        <input type="text" name="login"  value="${user.username}" disabled>-->
+<!--        <button type="submit">перейти</button>-->
+<!--    </form>-->
+<!--    <a href="/admin/storage/${user.username}">${user.username}</a><br>-->
+<!--</c:forEach>-->
+
+</body>
+</html>
